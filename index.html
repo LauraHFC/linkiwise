@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laura Cai — Product & Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F5F0E8;
+  --bg2:#EDE8DC;
+  --surface:#E8E2D4;
+  --surface2:#DDD7C8;
+  --green:#1C3A2A;
+  --green-mid:#2D5A3D;
+  --green-light:#3D7A52;
+  --gold:#B8860B;
+  --gold-light:#D4A017;
+  --gold-pale:#F5EDD0;
+  --text:#1A1A14;
+  --text-2:#4A4A3A;
+  --text-3:#8A8A72;
+  --border:rgba(28,58,42,0.1);
+  --border-strong:rgba(28,58,42,0.2);
+  --serif:'Cormorant Garant',serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden}
+
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0%;z-index:200;transition:width 0.1s}
+
+/* NAV */
+nav{position:fixed;top:2px;left:0;right:0;z-index:100;padding:0 64px;background:rgba(245,240,232,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;gap:48px;height:64px}
+.nav-logo{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--green);text-decoration:none;letter-spacing:0.02em;flex-shrink:0}
+.nav-logo span{color:var(--gold);font-style:italic}
+.nav-divider{width:1px;height:20px;background:var(--border-strong);flex-shrink:0}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:10px;color:var(--text-3);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;padding:0 16px;height:64px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav-links a:hover{color:var(--green);border-bottom-color:var(--gold)}
+
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:1.1fr 0.9fr;gap:80px;align-items:center;max-width:1240px;margin:0 auto;padding:140px 64px 80px}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:16px}
+.hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--gold)}
+.hero-h1{font-family:var(--serif);font-size:clamp(56px,6.5vw,88px);font-weight:300;line-height:1.02;margin-bottom:12px;color:var(--green)}
+.hero-h1 em{font-style:italic;color:var(--gold)}
+.hero-slogan{font-family:var(--mono);font-size:13px;color:var(--text-3);letter-spacing:0.12em;margin-bottom:32px;text-transform:uppercase}
+.hero-sub{font-size:17px;color:var(--text-2);line-height:1.85;max-width:480px;margin-bottom:48px;border-left:2px solid var(--gold);padding-left:20px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:64px}
+.btn-solid{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--green);color:var(--bg);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-decoration:none;transition:background 0.2s}
+.btn-solid:hover{background:var(--green-mid)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:1px solid var(--border-strong);color:var(--text-2);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-decoration:none;transition:all 0.2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-domains{display:flex;flex-wrap:wrap;gap:8px}
+.domain-tag{font-family:var(--mono);font-size:10px;padding:5px 12px;background:var(--surface);border:1px solid var(--border);color:var(--text-3);letter-spacing:0.06em}
+.hero-right{position:relative;height:420px;display:flex;align-items:center;justify-content:center}
+.float-numbers{position:relative;width:100%;height:100%}
+.fn{position:absolute;font-family:var(--serif);font-weight:300;color:var(--green);line-height:1;animation:floatNum linear infinite}
+.fn em{font-style:normal;color:var(--gold)}
+.fn-label{font-family:var(--mono);font-size:9px;color:var(--text-3);letter-spacing:0.08em;display:block;margin-top:5px;text-transform:uppercase}
+@keyframes floatNum{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+/* SECTIONS */
+.section{max-width:1240px;margin:0 auto;padding:120px 64px}
+.section-eyebrow{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.section-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+.section-h2{font-family:var(--serif);font-size:clamp(38px,4vw,60px);font-weight:300;line-height:1.08;margin-bottom:64px;color:var(--green)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:80px;align-items:start}
+.about-text p{color:var(--text-2);font-size:17px;line-height:1.9;margin-bottom:20px}
+.about-text p strong{color:var(--green);font-weight:500}
+.about-text .highlight{background:var(--gold-pale);padding:20px 24px;border-left:3px solid var(--gold);margin:28px 0;font-size:16px;color:var(--text);line-height:1.8;font-style:italic;font-family:var(--serif)}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);outline:1px solid var(--border)}
+.stat-card{background:var(--bg);padding:32px 20px;text-align:center}
+.stat-num{font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px}
+.stat-desc{font-family:var(--mono);font-size:9px;color:var(--text-3);letter-spacing:0.1em;line-height:1.6;text-transform:uppercase}
+
+/* DOMAINS ROW */
+.domains-row{background:var(--green);padding:40px 64px;margin:0}
+.domains-inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+.domains-label{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;flex-shrink:0}
+.domains-tags{display:flex;flex-wrap:wrap;gap:10px}
+.domain-pill{font-family:var(--mono);font-size:11px;padding:7px 16px;border:1px solid rgba(184,134,11,0.4);color:rgba(245,237,208,0.8);letter-spacing:0.06em}
+.domain-pill.highlight{background:var(--gold);color:var(--green);border-color:var(--gold);font-weight:500}
+
+/* EXPERIENCE */
+.exp-list{border-top:1px solid var(--border-strong)}
+.exp-row{display:grid;grid-template-columns:200px 1fr;gap:52px;padding:48px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:all 0.2s;position:relative}
+.exp-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background 0.2s}
+.exp-row:hover::before,.exp-row.open::before{background:var(--gold)}
+.exp-row:hover,.exp-row.open{padding-left:16px}
+.exp-period{font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.06em;margin-bottom:6px}
+.exp-place{font-family:var(--mono);font-size:10px;color:var(--text-3);opacity:0.6}
+.exp-co{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--green);margin-bottom:4px;line-height:1.1}
+.exp-role{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:0.08em;margin-bottom:14px}
+.exp-desc{font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:16px}
+.exp-detail{display:none;flex-direction:column;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.exp-row.open .exp-detail{display:flex}
+.exp-bullet{display:flex;gap:14px;font-size:14px;color:var(--text-2);line-height:1.75}
+.exp-bullet::before{content:'→';color:var(--gold);font-family:var(--mono);font-size:11px;flex-shrink:0;margin-top:4px}
+.exp-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.exp-chip{font-family:var(--mono);font-size:10px;padding:4px 12px;border:1px solid var(--border-strong);color:var(--text-3);background:var(--surface)}
+.exp-toggle{font-family:var(--mono);font-size:10px;color:var(--text-3);margin-top:14px;display:flex;align-items:center;gap:8px;letter-spacing:0.06em}
+.exp-toggle-icon{width:16px;height:16px;border:1px solid var(--text-3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;transition:transform 0.25s;line-height:1}
+.exp-row.open .exp-toggle-icon{transform:rotate(45deg)}
+
+/* PROJECTS */
+.projects-grid{display:flex;flex-direction:column;gap:16px}
+.proj-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.proj-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.proj-card{border:1px solid var(--border);background:var(--bg);padding:36px;cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden}
+.proj-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:transparent;transition:background 0.2s}
+.proj-card:hover::after,.proj-card.open::after{background:var(--gold)}
+.proj-card:hover{border-color:var(--border-strong);transform:translateY(-2px);background:var(--bg2)}
+.proj-card.wide{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start}
+.proj-illus{width:100%;margin-bottom:24px}
+.proj-card.wide .proj-illus{width:220px;margin-bottom:0;flex-shrink:0}
+.proj-tag-row{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.proj-tag{font-family:var(--mono);font-size:9px;padding:3px 10px;background:var(--surface);border:1px solid var(--border);color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase}
+.proj-tag.green{background:var(--green);color:var(--gold-pale);border-color:var(--green)}
+.proj-title{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--green);margin-bottom:8px;line-height:1.2}
+.proj-sub{font-size:14px;color:var(--text-2);line-height:1.75;margin-bottom:20px}
+.proj-nums{display:flex;gap:24px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--border)}
+.proj-num{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--gold);line-height:1}
+.proj-num span{display:block;font-family:var(--mono);font-size:9px;color:var(--text-3);font-weight:400;margin-top:3px;letter-spacing:0.06em;text-transform:uppercase}
+
+/* PROJECT EXPANDED */
+.proj-detail{display:none;margin-top:28px;padding-top:28px;border-top:1px solid var(--border-strong)}
+.proj-card.open .proj-detail{display:block}
+.proj-detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);outline:1px solid var(--border);margin-bottom:28px}
+.proj-detail-stat{background:var(--surface);padding:20px;text-align:center}
+.proj-detail-val{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--green);line-height:1;margin-bottom:4px}
+.proj-detail-label{font-family:var(--mono);font-size:9px;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;line-height:1.4}
+.proj-detail-body{display:flex;flex-direction:column;gap:16px}
+.proj-detail-section-title{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px}
+.proj-detail-text{font-size:14px;color:var(--text-2);line-height:1.85}
+.proj-detail-bullets{display:flex;flex-direction:column;gap:8px}
+.proj-detail-bullet{display:flex;gap:12px;font-size:14px;color:var(--text-2);line-height:1.7}
+.proj-detail-bullet::before{content:'→';color:var(--gold);font-family:var(--mono);font-size:11px;flex-shrink:0;margin-top:3px}
+.proj-detail-two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:20px}
+.proj-detail-col-title{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+
+/* SKILLS */
+.skills-wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.skill-col{}
+.skill-group-title{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.skill-group-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.skill-rows{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.skill-row{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.skill-name{font-size:14px;color:var(--text-2);flex:1}
+.skill-bar{width:100px;height:1px;background:var(--border-strong);flex-shrink:0}
+.skill-bar-fill{height:1px;background:var(--gold)}
+.skill-tag-list{display:flex;flex-wrap:wrap;gap:6px}
+.skill-tag{font-family:var(--mono);font-size:10px;padding:5px 12px;border:1px solid var(--border);color:var(--text-3);background:var(--surface)}
+.systems-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.system-item{font-family:var(--mono);font-size:10px;padding:8px 12px;background:var(--surface);border:1px solid var(--border);color:var(--text-2);text-align:center;letter-spacing:0.04em}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.edu-block{margin-bottom:40px}
+.edu-deg{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--green);margin-bottom:4px;line-height:1.2}
+.edu-school{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:0.06em;margin-bottom:4px}
+.edu-year{font-family:var(--mono);font-size:10px;color:var(--text-3);margin-bottom:14px}
+.edu-items{display:flex;flex-direction:column;gap:6px}
+.edu-item{font-size:13px;color:var(--text-2);display:flex;gap:10px}
+.edu-item::before{content:'·';color:var(--gold);font-size:16px;line-height:1.3}
+.cert-list{display:flex;flex-direction:column;gap:12px}
+.cert-item{padding:18px 20px;border:1px solid var(--border);background:var(--surface);display:flex;gap:16px;align-items:flex-start}
+.cert-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
+.cert-name{font-size:14px;font-weight:500;color:var(--green);margin-bottom:2px;line-height:1.3}
+.cert-org{font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.04em}
+
+/* CONTACT */
+.contact-wrap{background:var(--green);padding:80px 64px;text-align:center;position:relative;overflow:hidden}
+.contact-wrap::before{content:'';position:absolute;top:-120px;right:-120px;width:360px;height:360px;border:1px solid rgba(184,134,11,0.15);border-radius:50%}
+.contact-wrap::after{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border:1px solid rgba(184,134,11,0.1);border-radius:50%}
+.contact-eyebrow{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px}
+.contact-title{font-family:var(--serif);font-size:clamp(40px,5vw,68px);font-weight:300;color:var(--bg);margin-bottom:20px;line-height:1.05}
+.contact-title em{font-style:italic;color:var(--gold)}
+.contact-sub{font-size:16px;color:rgba(245,240,232,0.65);margin-bottom:44px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.8}
+.contact-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--gold);color:var(--green);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-decoration:none;font-weight:500;transition:opacity 0.2s}
+.btn-gold:hover{opacity:0.88}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:1px solid rgba(184,134,11,0.4);color:rgba(245,237,208,0.8);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-decoration:none;transition:all 0.2s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+/* FOOTER */
+footer{background:var(--green);border-top:1px solid rgba(184,134,11,0.15);padding:24px 64px;display:flex;justify-content:space-between;align-items:center}
+.footer-left{font-family:var(--mono);font-size:10px;color:rgba(245,237,208,0.4);letter-spacing:0.08em}
+.footer-right{font-family:var(--mono);font-size:10px;color:rgba(184,134,11,0.6);letter-spacing:0.08em}
+
+/* FADE */
+.fade{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease}
+.fade.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:960px){
+  nav{padding:0 24px}
+  #hero{grid-template-columns:1fr;padding:110px 24px 60px;gap:48px;min-height:auto}
+  .hero-right{height:220px}
+  .section{padding:80px 24px}
+  .about-grid,.proj-row-2,.proj-row-3,.skills-wrap,.edu-grid{grid-template-columns:1fr}
+  .proj-card.wide{grid-template-columns:1fr}
+  .proj-detail-two-col{grid-template-columns:1fr}
+  .domains-row{padding:32px 24px}
+  .contact-wrap{padding:60px 24px}
+  footer{padding:20px 24px;flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Laura <span>Cai</span></a>
+    <div class="nav-divider"></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education / Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Product Manager · Analytics · Data</div>
+    <h1 class="hero-h1">From<br><em>insight</em><br>to impact.</h1>
+    <div class="hero-slogan">Laura Cai · Auckland, New Zealand</div>
+    <p class="hero-sub">I build digital products that move numbers — combining a product manager's delivery instinct with a data practitioner's rigour. 10+ years across ecommerce, fintech, telco, and O2O.</p>
+    <div class="hero-btns">
+      <a href="https://www.linkedin.com/in/laurahfc/" target="_blank" class="btn-solid">LinkedIn →</a>
+      <a href="#projects" class="btn-outline">View projects</a>
+      <a href="mailto:overlaurasea@gmail.com" class="btn-outline">Email</a>
+    </div>
+    <div class="hero-domains">
+      <span class="domain-tag">eCommerce</span>
+      <span class="domain-tag">Fintech / Lending</span>
+      <span class="domain-tag">O2O</span>
+      <span class="domain-tag">Telco</span>
+      <span class="domain-tag">Identity & PKI</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="float-numbers">
+      <div class="fn" style="top:5%;left:10%;font-size:54px;animation-duration:6.2s;animation-delay:0s"><em>+50%</em><span class="fn-label">lead conversion</span></div>
+      <div class="fn" style="top:10%;right:8%;font-size:30px;animation-duration:7.1s;animation-delay:1.2s;opacity:0.55">92%<span class="fn-label">user retention</span></div>
+      <div class="fn" style="top:38%;left:2%;font-size:40px;animation-duration:5.8s;animation-delay:2s;opacity:0.7">10M+<span class="fn-label">subscribers</span></div>
+      <div class="fn" style="top:42%;right:12%;font-size:46px;animation-duration:8.3s;animation-delay:0.6s"><em>−45%</em><span class="fn-label">CAC</span></div>
+      <div class="fn" style="bottom:22%;left:20%;font-size:34px;animation-duration:6.7s;animation-delay:1.8s;opacity:0.65">100K+<span class="fn-label">listings</span></div>
+      <div class="fn" style="bottom:8%;right:5%;font-size:38px;animation-duration:7.4s;animation-delay:3.2s;opacity:0.8"><em>+18%</em><span class="fn-label">ARPU</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DOMAINS ROW -->
+<div class="domains-row">
+  <div class="domains-inner">
+    <div class="domains-label">Systems built</div>
+    <div class="domains-tags">
+      <span class="domain-pill highlight">Web / App</span>
+      <span class="domain-pill">PIM</span>
+      <span class="domain-pill">OMS</span>
+      <span class="domain-pill">CRM</span>
+      <span class="domain-pill">ERP</span>
+      <span class="domain-pill">Inventory</span>
+      <span class="domain-pill highlight">Data Products</span>
+      <span class="domain-pill">Credit & Lending</span>
+      <span class="domain-pill">Order Dispatch Engine</span>
+      <span class="domain-pill">System Integration</span>
+      <span class="domain-pill">Identity & SSO</span>
+      <span class="domain-pill">BI Platform</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-eyebrow">About</div>
+  <h2 class="section-h2">Data-first product thinking.<br>Delivery that sticks.</h2>
+  <div class="about-grid fade">
+    <div class="about-text">
+      <p>I'm a <strong>Senior Product Manager</strong> based in Auckland, New Zealand, with over a decade of experience building digital products across ecommerce, fintech, O2O, and telco.</p>
+      <p>My edge is the combination: I think like an analyst and execute like a product manager. I don't hand off insights — I own the outcome. That means defining what to track, building the data infrastructure to see clearly, and then driving the product decisions that move the numbers.</p>
+      <div class="highlight">"The riskiest thing in product is building the right thing on wrong data. I fix the foundation first."</div>
+      <p>I've shipped and scaled platforms handling billions in GMV, built credit decision engines with 70%+ automation, designed BI systems for 10M+ user telco datasets, and launched marketplaces from concept to 100K listings in 6 months.</p>
+      <p>I hold a <strong>Master of Information Sciences from Massey University</strong> and have been based in Auckland for two years, embedding in the local tech community through Colab Cohort's Advanced PM programme and industry volunteering.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <div class="stat-desc">Years in digital<br>product & data</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">+50%</div>
+        <div class="stat-desc">Visitor-to-lead<br>conversion lift</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10M+</div>
+        <div class="stat-desc">Users across<br>telco projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">92%</div>
+        <div class="stat-desc">Annual user<br>retention rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience" style="padding-top:0">
+  <div class="section-eyebrow">Experience</div>
+  <h2 class="section-h2">A decade of shipping<br>things that move numbers.</h2>
+  <div class="exp-list">
+
+    <div class="exp-row fade" onclick="this.classList.toggle('open');this.querySelector('.exp-toggle span').textContent=this.classList.contains('open')?'Collapse':'Expand'">
+      <div>
+        <div class="exp-period">May 2016 — June 2022</div>
+        <div class="exp-place">Beijing, China · 6 years</div>
+      </div>
+      <div>
+        <div class="exp-co">UCAR Inc. Group</div>
+        <div class="exp-role">Senior eCommerce Product Manager → Product Lead</div>
+        <div class="exp-desc">Led the full digital sales ecosystem for a listed automaker's online retail platform — 100K+ users, CNY billions in annual GMV, 500+ dealerships, 3,000+ internal staff. Progressed from Agile backlog execution to platform portfolio strategy and cross-functional leadership over 6 years.</div>
+        <div class="exp-detail">
+          <div class="exp-bullet">4 years as Senior PM owning specific product lines end-to-end; 2 years as Product Lead managing a team of 6–10 PMs across 10 product lines and the full pre-sales, sales, and after-sales portfolio.</div>
+          <div class="exp-bullet">Built and iterated the conversion funnel (web + app) using A/B testing and funnel analysis — +50% visitor-to-lead, +30% visitor-to-sale, −45% lead CAC over one year.</div>
+          <div class="exp-bullet">Designed a sales analytics toolkit: unified customer identity across 6+ systems, built data pipelines, role-specific dashboards for management and sales consultants, automated all daily reporting.</div>
+          <div class="exp-bullet">Shipped one-stop auto-loan product (application → approval → repayment): built credit decision engine, managed credit bureau and identity integrations, 70%+ automatic approval, bad-debt under 1%.</div>
+          <div class="exp-bullet">Launched API integrations with 4 banks and 5 insurers — fully embedded flow (no redirects), expanding finance and insurance choices at point of purchase.</div>
+          <div class="exp-bullet">Built a used-car marketplace from concept to 100K+ listings in 6 months — MVP scoping under extreme time constraint, supporting B2C and C2C supply models.</div>
+          <div class="exp-bullet">As Product Lead: set platform-level roadmap and priorities, ran monthly reviews, weekly cross-team syncs, and owned Agile ceremonies across a complex multi-product environment.</div>
+          <div class="exp-chips">
+            <span class="exp-chip">eCommerce</span><span class="exp-chip">Funnel optimisation</span><span class="exp-chip">A/B testing</span><span class="exp-chip">Data pipeline</span><span class="exp-chip">Credit modelling</span><span class="exp-chip">API integration</span><span class="exp-chip">Marketplace</span><span class="exp-chip">Agile · Squad</span><span class="exp-chip">Team leadership</span>
+          </div>
+        </div>
+        <div class="exp-toggle"><div class="exp-toggle-icon">+</div><span>Expand</span></div>
+      </div>
+    </div>
+
+    <div class="exp-row fade" onclick="this.classList.toggle('open');this.querySelector('.exp-toggle span').textContent=this.classList.contains('open')?'Collapse':'Expand'">
+      <div>
+        <div class="exp-period">May 2011 — Nov 2013</div>
+        <div class="exp-place">Beijing, China · 2.5 years</div>
+      </div>
+      <div>
+        <div class="exp-co">BONC Corporation</div>
+        <div class="exp-role">BI Business Analyst · Telco Sector</div>
+        <div class="exp-desc">Embedded analytics consultant for major Chinese telco operators — China Unicom and China Mobile — on BI platform upgrades and data-driven marketing programmes covering tens of millions of subscribers.</div>
+        <div class="exp-detail">
+          <div class="exp-bullet">Led data governance programme for China Unicom Shaanxi: unified 30+ source systems (billing, CRM, network ops, device management, external data), standardised all metric definitions across departments, built automated data quality monitoring across completeness, accuracy, consistency, and timeliness dimensions.</div>
+          <div class="exp-bullet">Built BI platform from scratch: ETL pipelines, role-specific dashboards for management and ops, self-serve query tools for analysts, fully automated daily reporting — zero manual effort.</div>
+          <div class="exp-bullet">Designed user segmentation system using clustering analysis (SPSS) across 4 dimensions: RFM value, behavioural patterns, lifecycle stage, and preference characteristics. Maintained 5–8 actionable segments — analytically meaningful and operationally executable.</div>
+          <div class="exp-bullet">Built predictive models: churn prediction (spend decline + complaint frequency + usage anomaly signals), plan upgrade propensity (data cap saturation + device capability), and convergence selling scores.</div>
+          <div class="exp-bullet">Designed and executed targeted campaigns across SMS, app push, outbound calls, and co-marketing channels with banks and e-commerce partners — 92%+ annual retention, +18% average monthly ARPU.</div>
+          <div class="exp-chips">
+            <span class="exp-chip">Telco analytics</span><span class="exp-chip">Data governance</span><span class="exp-chip">BI platform</span><span class="exp-chip">User segmentation</span><span class="exp-chip">Churn prediction</span><span class="exp-chip">ARPU optimisation</span><span class="exp-chip">SPSS</span><span class="exp-chip">ETL pipeline</span>
+          </div>
+        </div>
+        <div class="exp-toggle"><div class="exp-toggle-icon">+</div><span>Expand</span></div>
+      </div>
+    </div>
+
+    <div class="exp-row fade" onclick="this.classList.toggle('open');this.querySelector('.exp-toggle span').textContent=this.classList.contains('open')?'Collapse':'Expand'">
+      <div>
+        <div class="exp-period">June 2015 — May 2016</div>
+        <div class="exp-place">Beijing, China · 1 year</div>
+      </div>
+      <div>
+        <div class="exp-co">Beijing Dakeyoujia</div>
+        <div class="exp-role">Product Manager · O2O Services Marketplace</div>
+        <div class="exp-desc">Built a household services marketplace from zero — 100K+ users across 20+ cities, 10K+ service providers, routing 10K+ orders per day.</div>
+        <div class="exp-detail">
+          <div class="exp-bullet">Designed and launched an automated order-dispatch engine with skill and location-based matching — routes 10K+ orders/day with under 3% manual intervention and over 95% fulfillment rate.</div>
+          <div class="exp-bullet">Owned Service Provider App and backend admin console — onboarded 10K+ providers (registration, verification, training), supported scheduling, order management, and payouts.</div>
+          <div class="exp-bullet">Owned Vendor Management portal for hundreds of agencies — e-contract onboarding, provider management, end-to-end online settlements.</div>
+          <div class="exp-chips">
+            <span class="exp-chip">O2O</span><span class="exp-chip">Marketplace</span><span class="exp-chip">Order dispatch engine</span><span class="exp-chip">0-to-1</span>
+          </div>
+        </div>
+        <div class="exp-toggle"><div class="exp-toggle-icon">+</div><span>Expand</span></div>
+      </div>
+    </div>
+
+    <div class="exp-row fade" onclick="this.classList.toggle('open');this.querySelector('.exp-toggle span').textContent=this.classList.contains('open')?'Collapse':'Expand'">
+      <div>
+        <div class="exp-period">May 2014 — May 2015</div>
+        <div class="exp-place">Beijing, China · 1 year</div>
+      </div>
+      <div>
+        <div class="exp-co">GOME Online</div>
+        <div class="exp-role">eCommerce Product Manager</div>
+        <div class="exp-desc">Owned the product detail page and PIM system for millions of SKUs across consumer electronics and appliances at one of China's largest electronics retailers.</div>
+        <div class="exp-detail">
+          <div class="exp-bullet">Owned catalogue/PIM system maintaining rich data for millions of SKUs, governing hundreds of categories and tags across appliances, consumer electronics, and apparel.</div>
+          <div class="exp-bullet">Built PDP recommendation engines ("Top Sellers", "You May Also Like") — achieved 5%+ CTR and 30%+ add-to-cart conversion on clicked recommendations.</div>
+          <div class="exp-bullet">Shipped UGC review system (photos, video, ratings) — buyer review rate above 5%, boosting decision support and platform trust.</div>
+          <div class="exp-bullet">Maintained 5–15% add-to-cart conversion rate on product detail pages through iterative UX optimisation.</div>
+          <div class="exp-chips">
+            <span class="exp-chip">eCommerce</span><span class="exp-chip">PIM</span><span class="exp-chip">Recommendation engine</span><span class="exp-chip">UGC</span><span class="exp-chip">Conversion optimisation</span>
+          </div>
+        </div>
+        <div class="exp-toggle"><div class="exp-toggle-icon">+</div><span>Expand</span></div>
+      </div>
+    </div>
+
+    <div class="exp-row fade" onclick="this.classList.toggle('open');this.querySelector('.exp-toggle span').textContent=this.classList.contains('open')?'Collapse':'Expand'">
+      <div>
+        <div class="exp-period">Nov 2013 — May 2014</div>
+        <div class="exp-place">Beijing, China · 6 months</div>
+      </div>
+      <div>
+        <div class="exp-co">Wangyin Online (JD.com)</div>
+        <div class="exp-role">Business Analyst · Payments</div>
+        <div class="exp-desc">Payment platform under JD.com — one of China's largest ecommerce groups.</div>
+        <div class="exp-detail">
+          <div class="exp-bullet">Designed and launched merchant onboarding flow (e-contract sign-up, profile management, settlements) for tens of thousands of merchants.</div>
+          <div class="exp-bullet">Delivered 20+ client payment-gateway integrations, enabling end-to-end payment and business workflows.</div>
+          <div class="exp-chips">
+            <span class="exp-chip">Payments</span><span class="exp-chip">Merchant platform</span><span class="exp-chip">System integration</span>
+          </div>
+        </div>
+        <div class="exp-toggle"><div class="exp-toggle-icon">+</div><span>Expand</span></div>
+      </div>
+    </div>
+
+    <div class="exp-row fade" onclick="this.classList.toggle('open');this.querySelector('.exp-toggle span').textContent=this.classList.contains('open')?'Collapse':'Expand'">
+      <div>
+        <div class="exp-period">Aug 2009 — May 2011</div>
+        <div class="exp-place">Beijing, China · 1.75 years</div>
+      </div>
+      <div>
+        <div class="exp-co">iTrusChina</div>
+        <div class="exp-role">Business Analyst · PKI & Digital Identity</div>
+        <div class="exp-desc">China's leading SSL/TLS and PKI provider, serving ~400M users with digital certification and cloud e-signature services.</div>
+        <div class="exp-detail">
+          <div class="exp-bullet">Drove requirements analysis and process re-engineering for cloud-based digital certification — cut institutional onboarding from 20–40 days to under 5 days (2.5× faster).</div>
+          <div class="exp-bullet">Enabled 50+ institutions to deploy and integrate PKI/CA with existing systems, issuing 10K+ digital certificates.</div>
+          <div class="exp-bullet">Co-built MVP of a certificate-based SSO identity system — requirements analysis, user research, and go-live support.</div>
+          <div class="exp-chips">
+            <span class="exp-chip">PKI / Identity</span><span class="exp-chip">SSO</span><span class="exp-chip">System integration</span><span class="exp-chip">Requirements analysis</span>
+          </div>
+        </div>
+        <div class="exp-toggle"><div class="exp-toggle-icon">+</div><span>Expand</span></div>
+      </div>
+    </div>
+
+    <div class="exp-row fade" style="cursor:default;opacity:0.7">
+      <div>
+        <div class="exp-period">Jan 2025 — Mar 2025</div>
+        <div class="exp-place">Auckland, NZ · 3 months</div>
+      </div>
+      <div>
+        <div class="exp-co" style="font-size:18px">EcoMatters Environment Trust</div>
+        <div class="exp-role">Project Coordinator Intern</div>
+        <div class="exp-desc">Coordinated EcoFest — Auckland's month-long environmental festival — managing the end-to-end publishing pipeline for 350+ events across 10+ organisations. Produced performance data reports feeding into the following year's planning.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects" style="padding-top:0">
+  <div class="section-eyebrow">Projects</div>
+  <h2 class="section-h2">Six case studies.<br>Products, data, and outcomes.</h2>
+
+  <div class="projects-grid">
+    <div class="proj-row-2">
+
+      <!-- P1: Conversion funnel -->
+      <div class="proj-card fade" onclick="this.classList.toggle('open')">
+        <div class="proj-illus">
+          <svg viewBox="0 0 360 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:90px">
+            <rect x="40" y="4" width="200" height="20" fill="#1C3A2A" opacity="0.08" rx="1"/>
+            <rect x="60" y="28" width="160" height="18" fill="#1C3A2A" opacity="0.13" rx="1"/>
+            <rect x="82" y="50" width="116" height="18" fill="#1C3A2A" opacity="0.2" rx="1"/>
+            <rect x="106" y="72" width="68" height="18" fill="#B8860B" opacity="0.85" rx="1"/>
+            <text x="140" y="17" font-family="DM Mono,monospace" font-size="9" fill="#1C3A2A" text-anchor="middle" opacity="0.6">100K visitors</text>
+            <text x="140" y="40" font-family="DM Mono,monospace" font-size="9" fill="#1C3A2A" text-anchor="middle" opacity="0.65">1,500 leads (+50%)</text>
+            <text x="140" y="62" font-family="DM Mono,monospace" font-size="9" fill="#1C3A2A" text-anchor="middle" opacity="0.75">orders</text>
+            <text x="140" y="84" font-family="DM Mono,monospace" font-size="9" fill="#F5F0E8" text-anchor="middle" font-weight="500">1,300 sales (+30%)</text>
+            <line x1="240" y1="14" x2="268" y2="14" stroke="#B8860B" stroke-width="0.5" opacity="0.5"/>
+            <text x="272" y="17" font-family="DM Mono,monospace" font-size="8" fill="#8A8A72">−60% drop</text>
+            <line x1="220" y1="37" x2="268" y2="37" stroke="#B8860B" stroke-width="0.5" opacity="0.5"/>
+            <text x="272" y="40" font-family="DM Mono,monospace" font-size="8" fill="#8A8A72">optimised</text>
+            <line x1="198" y1="59" x2="268" y2="59" stroke="#B8860B" stroke-width="0.5" opacity="0.5"/>
+            <line x1="174" y1="81" x2="268" y2="81" stroke="#B8860B" stroke-width="0.8" opacity="0.7"/>
+            <text x="272" y="84" font-family="DM Mono,monospace" font-size="8" fill="#B8860B">target</text>
+          </svg>
+        </div>
+        <div class="proj-tag-row">
+          <span class="proj-tag green">eCommerce</span>
+          <span class="proj-tag">UCAR · 2016–2022</span>
+          <span class="proj-tag">Product Management</span>
+        </div>
+        <div class="proj-title">Conversion funnel optimisation</div>
+        <div class="proj-sub">End-to-end redesign of the online vehicle purchase journey — from test-drive booking through deposit, ordering, and CRM. Iterative A/B testing over 12 months across web and app.</div>
+        <div class="proj-nums">
+          <div class="proj-num">+50%<span>visitor → lead</span></div>
+          <div class="proj-num">+30%<span>visitor → sale</span></div>
+          <div class="proj-num">−45%<span>lead CAC</span></div>
+        </div>
+        <div class="proj-detail">
+          <div class="proj-detail-grid">
+            <div class="proj-detail-stat"><div class="proj-detail-val">1% → 1.5%</div><div class="proj-detail-label">Visitor-to-lead rate</div></div>
+            <div class="proj-detail-stat"><div class="proj-detail-val">0.1% → 0.13%</div><div class="proj-detail-label">Visitor-to-sale rate</div></div>
+            <div class="proj-detail-stat"><div class="proj-detail-val">~¥500 → ¥275</div><div class="proj-detail-label">Lead acquisition cost</div></div>
+          </div>
+          <div class="proj-detail-body">
+            <div>
+              <div class="proj-detail-section-title">The problem</div>
+              <div class="proj-detail-text">The platform was new and conversion was low. But "low conversion" is a symptom, not a cause. The first task was finding where users were dropping off and why — which required trustworthy funnel data before any optimisation could begin.</div>
+            </div>
+            <div>
+              <div class="proj-detail-section-title">The approach</div>
+              <div class="proj-detail-bullets">
+                <div class="proj-detail-bullet">Audited tracking layer first: cross-checked event data against backend transaction logs, fixed gaps, established a reliable funnel baseline.</div>
+                <div class="proj-detail-bullet">Ran iterative optimisation loop: funnel analysis → user research → hypothesis → A/B test → ship → repeat. Multiple cycles over 12 months.</div>
+                <div class="proj-detail-bullet">Test-drive booking: discovered drop-off wasn't digital — it was the offline experience. Standardised the dealership reception process, sales script, and lead capture to fix the full funnel.</div>
+                <div class="proj-detail-bullet">Online ordering: added 3D car viewer, loan calculator, and transparent purchase journey visualisation to reduce perceived risk and build trust.</div>
+                <div class="proj-detail-bullet">CRM: built lead status tracking and sales reporting so consultants could see each lead's visit history, intent signals, and follow-up priority in real time.</div>
+              </div>
+            </div>
+            <div>
+              <div class="proj-detail-section-title">Key insight</div>
+              <div class="proj-detail-text">Visitor-to-lead improved more (+50%) than visitor-to-sale (+30%) because as lead volume grew, so did the mix of intent levels — some natural dilution is expected. The full-funnel CAC still improved meaningfully because efficiency gains compounded across every step.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P2: Sales analytics toolkit -->
+      <div class="proj-card fade" onclick="this.classList.toggle('open')">
+        <div class="proj-illus">
+          <svg viewBox="0 0 360 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:90px">
+            <circle cx="28" cy="18" r="7" fill="#1C3A2A" opacity="0.12" stroke="#1C3A2A" stroke-width="0.5" stroke-opacity="0.3"/>
+            <circle cx="28" cy="38" r="7" fill="#1C3A2A" opacity="0.12" stroke="#1C3A2A" stroke-width="0.5" stroke-opacity="0.3"/>
+            <circle cx="28" cy="58" r="7" fill="#1C3A2A" opacity="0.12" stroke="#1C3A2A" stroke-width="0.5" stroke-opacity="0.3"/>
+            <circle cx="28" cy="78" r="7" fill="#1C3A2A" opacity="0.12" stroke="#1C3A2A" stroke-width="0.5" stroke-opacity="0.3"/>
+            <circle cx="52" cy="28" r="7" fill="#1C3A2A" opacity="0.12" stroke="#1C3A2A" stroke-width="0.5" stroke-opacity="0.3"/>
+            <circle cx="52" cy="52" r="7" fill="#1C3A2A" opacity="0.12" stroke="#1C3A2A" stroke-width="0.5" stroke-opacity="0.3"/>
+            <circle cx="52" cy="72" r="7" fill="#1C3A2A" opacity="0.12" stroke="#1C3A2A" stroke-width="0.5" stroke-opacity="0.3"/>
+            <text x="28" y="20" font-family="DM Mono,monospace" font-size="5.5" fill="#1C3A2A" text-anchor="middle" opacity="0.6">CRM</text>
+            <text x="28" y="40" font-family="DM Mono,monospace" font-size="5.5" fill="#1C3A2A" text-anchor="middle" opacity="0.6">OMS</text>
+            <text x="28" y="60" font-family="DM Mono,monospace" font-size="5.5" fill="#1C3A2A" text-anchor="middle" opacity="0.6">Inventory</text>
+            <text x="28" y="80" font-family="DM Mono,monospace" font-size="5.5" fill="#1C3A2A" text-anchor="middle" opacity="0.6">Finance</text>
+            <text x="52" y="30" font-family="DM Mono,monospace" font-size="5.5" fill="#1C3A2A" text-anchor="middle" opacity="0.6">ERP</text>
+            <text x="52" y="54" font-family="DM Mono,monospace" font-size="5.5" fill="#1C3A2A" text-anchor="middle" opacity="0.6">App</text>
+            <text x="52" y="74" font-family="DM Mono,monospace" font-size="5.5" fill="#1C3A2A" text-anchor="middle" opacity="0.6">Web</text>
+            <line x1="35" y1="18" x2="116" y2="46" stroke="#1C3A2A" stroke-width="0.4" opacity="0.25"/>
+            <line x1="35" y1="38" x2="116" y2="48" stroke="#1C3A2A" stroke-width="0.4" opacity="0.25"/>
+            <line x1="35" y1="58" x2="116" y2="50" stroke="#1C3A2A" stroke-width="0.4" opacity="0.25"/>
+            <line x1="35" y1="78" x2="116" y2="52" stroke="#1C3A2A" stroke-width="0.4" opacity="0.25"/>
+            <line x1="59" y1="28" x2="116" y2="47" stroke="#1C3A2A" stroke-width="0.4" opacity="0.25"/>
+            <line x1="59" y1="52" x2="116" y2="49" stroke="#1C3A2A" stroke-width="0.4" opacity="0.25"/>
+            <line x1="59" y1="72" x2="116" y2="51" stroke="#1C3A2A" stroke-width="0.4" opacity="0.25"/>
+            <rect x="116" y="34" width="52" height="30" fill="#1C3A2A" opacity="0.08" rx="2" stroke="#1C3A2A" stroke-width="0.5" stroke-opacity="0.2"/>
+            <text x="142" y="47" font-family="DM Mono,monospace" font-size="7" fill="#1C3A2A" text-anchor="middle" opacity="0.8">unified</text>
+            <text x="142" y="57" font-family="DM Mono,monospace" font-size="7" fill="#1C3A2A" text-anchor="middle" opacity="0.6">pipeline</text>
+            <line x1="168" y1="49" x2="198" y2="24" stroke="#B8860B" stroke-width="0.8" opacity="0.5"/>
+            <line x1="168" y1="49" x2="198" y2="49" stroke="#B8860B" stroke-width="0.8" opacity="0.5"/>
+            <line x1="168" y1="49" x2="198" y2="74" stroke="#B8860B" stroke-width="0.8" opacity="0.5"/>
+            <rect x="198" y="14" width="72" height="18" fill="#B8860B" opacity="0.1" rx="1" stroke="#B8860B" stroke-width="0.4" stroke-opacity="0.3"/>
+            <rect x="198" y="40" width="72" height="18" fill="#B8860B" opacity="0.1" rx="1" stroke="#B8860B" stroke-width="0.4" stroke-opacity="0.3"/>
+            <rect x="198" y="66" width="72" height="18" fill="#B8860B" opacity="0.1" rx="1" stroke="#B8860B" stroke-width="0.4" stroke-opacity="0.3"/>
+            <text x="234" y="26" font-family="DM Mono,monospace" font-size="7" fill="#1C3A2A" text-anchor="middle" opacity="0.7">management view</text>
+            <text x="234" y="52" font-family="DM Mono,monospace" font-size="7" fill="#1C3A2A" text-anchor="middle" opacity="0.7">sales CRM embed</text>
+            <text x="234" y="78" font-family="DM Mono,monospace" font-size="7" fill="#1C3A2A" text-anchor="middle" opacity="0.7">analyst self-serve</text>
+            <text x="280" y="26" font-family="DM Mono,monospace" font-size="6.5" fill="#B8860B" text-anchor="middle" opacity="0.6">+18%</text>
+          </svg>
+        </div>
+        <div class="proj-tag-row">
+          <span class="proj-tag green">Data Product</span>
+          <span class="proj-tag">UCAR · 2016–2022</span>
+          <span class="proj-tag">BI · Analytics</span>
+        </div>
+        <div class="proj-title">Sales analytics toolkit</div>
+        <div class="proj-sub">Unified 6+ fragmented systems into a single analytics platform with role-specific dashboards, embedded CRM analytics, automated reporting, and real-time alerts — driving measurable improvement in human performance.</div>
+        <div class="proj-nums">
+          <div class="proj-num">+18%<span>store sales / person</span></div>
+          <div class="proj-num">6+<span>systems unified</span></div>
+          <div class="proj-num">0<span>manual reports</span></div>
+        </div>
+        <div class="proj-detail">
+          <div class="proj-detail-grid">
+            <div class="proj-detail-stat"><div class="proj-detail-val">+18%</div><div class="proj-detail-label">Avg sales performance per person</div></div>
+            <div class="proj-detail-stat"><div class="proj-detail-val">6+</div><div class="proj-detail-label">Source systems integrated</div></div>
+            <div class="proj-detail-stat"><div class="proj-detail-val">0</div><div class="proj-detail-label">Manual daily reports (was 100%)</div></div>
+          </div>
+          <div class="proj-detail-body">
+            <div>
+              <div class="proj-detail-section-title">The problem</div>
+              <div class="proj-detail-text">Sales data was scattered across CRM, OMS, inventory, and finance systems. Managers built Excel reports manually every week. Worse — "conversion" meant different things in different systems, so nobody trusted the numbers. Good data existed; it just couldn't be used.</div>
+            </div>
+            <div>
+              <div class="proj-detail-section-title">Foundation first</div>
+              <div class="proj-detail-bullets">
+                <div class="proj-detail-bullet">Unified customer identity across systems — the same customer had different IDs in every system. Built identity resolution to create a single customer journey view.</div>
+                <div class="proj-detail-bullet">Established company-wide metrics dictionary: one definition for "lead", one for "closed deal", agreed across all departments. No more metric arguments.</div>
+                <div class="proj-detail-bullet">Built ETL pipeline extracting from all source systems, cleaning and standardising, loading into a centralised reporting layer.</div>
+              </div>
+            </div>
+            <div>
+              <div class="proj-detail-section-title">Role-specific products</div>
+              <div class="proj-detail-bullets">
+                <div class="proj-detail-bullet">Management: macro dashboards — total leads, test drives, sales, store rankings, inventory, monthly achievement rates. Automated threshold alerts (no manual monitoring).</div>
+                <div class="proj-detail-bullet">Sales consultants: analytics embedded directly in the CRM. Open a customer record and see full visit history, browsing behaviour, intent signals, and recommended follow-up actions.</div>
+                <div class="proj-detail-bullet">Analysts: self-serve query capability and automated scheduled reports delivered on time, every time.</div>
+                <div class="proj-detail-bullet">All: mobile-accessible key metrics. Real-time anomaly alerts pushed to responsible owners automatically.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-row-2">
+
+      <!-- P3: Auto loan -->
+      <div class="proj-card fade" onclick="this.classList.toggle('open')">
+        <div class="proj-illus">
+          <svg viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:80px">
+            <circle cx="30" cy="45" r="16" fill="#1C3A2A" opacity="0.07" stroke="#1C3A2A" stroke-width="0.6" stroke-opacity="0.25"/>
+            <text x="30" y="42" font-family="DM Mono,monospace" font-size="6.5" fill="#1C3A2A" text-anchor="middle" opacity="0.7">apply</text>
+            <text x="30" y="52" font-family="DM Mono,monospace" font-size="6.5" fill="#1C3A2A" text-anchor="middle" opacity="0.5">+ score</text>
+            <line x1="46" y1="38" x2="82" y2="22" stroke="#1C3A2A" stroke-width="0.7" opacity="0.35"/>
+            <line x1="46" y1="52" x2="82" y2="62" stroke="#1C3A2A" stroke-width="0.7" opacity="0.2"/>
+            <rect x="82" y="12" width="52" height="20" fill="#B8860B" opacity="0.8" rx="1"/>
+            <text x="108" y="24" font-family="DM Mono,monospace" font-size="7" fill="#F5F0E8" text-anchor="middle">auto · 70%</text>
+            <rect x="82" y="54" width="52" height="20" fill="#1C3A2A" opacity="0.1" rx="1" stroke="#1C3A2A" stroke-width="0.4" stroke-opacity="0.3"/>
+            <text x="108" y="66" font-family="DM Mono,monospace" font-size="7" fill="#1C3A2A" text-anchor="middle" opacity="0.7">expert · 30%</text>
+            <line x1="134" y1="22" x2="166" y2="44" stroke="#B8860B" stroke-width="0.7" opacity="0.5"/>
+            <line x1="134" y1="64" x2="166" y2="46" stroke="#1C3A2A" stroke-width="0.7" opacity="0.35"/>
+            <circle cx="178" cy="45" r="14" fill="#1C3A2A" opacity="0.07" stroke="#B8860B" stroke-width="0.8" stroke-opacity="0.6"/>
+            <text x="178" y="43" font-family="DM Mono,monospace" font-size="6" fill="#1C3A2A" text-anchor="middle" opacity="0.8">approved</text>
+            <text x="178" y="53" font-family="DM Mono,monospace" font-size="6" fill="#B8860B" text-anchor="middle">&lt;1% bad</text>
+          </svg>
+        </div>
+        <div class="proj-tag-row">
+          <span class="proj-tag green">Fintech · Lending</span>
+          <span class="proj-tag">UCAR · Credit Product</span>
+        </div>
+        <div class="proj-title">One-stop auto-loan</div>
+        <div class="proj-sub">End-to-end loan product from application to repayment, with a hybrid credit decision engine — automatic approval for 70%+, expert review for the rest.</div>
+        <div class="proj-nums">
+          <div class="proj-num">70%+<span>auto-approval</span></div>
+          <div class="proj-num">&lt;1%<span>bad debt rate</span></div>
+        </div>
+        <div class="proj-detail">
+          <div class="proj-detail-grid">
+            <div class="proj-detail-stat"><div class="proj-detail-val">70%+</div><div class="proj-detail-label">Automatic approval</div></div>
+            <div class="proj-detail-stat"><div class="proj-detail-val">&lt;1%</div><div class="proj-detail-label">Bad debt rate</div></div>
+            <div class="proj-detail-stat"><div class="proj-detail-val">mins</div><div class="proj-detail-label">vs. ~1 week before</div></div>
+          </div>
+          <div class="proj-detail-body">
+            <div>
+              <div class="proj-detail-section-title">My role</div>
+              <div class="proj-detail-text">I owned the end-to-end loan product — from user-facing application flow through to the backend decision engine. The data science team built the scoring models (credit scorecard, blacklist, fraud detection). My job was to turn those models into a working product that balanced automation, user experience, and risk.</div>
+            </div>
+            <div>
+              <div class="proj-detail-section-title">Key decisions</div>
+              <div class="proj-detail-bullets">
+                <div class="proj-detail-bullet">Designed 3-tier decision architecture: automatic approval, automatic rejection, and human-assisted review with system-generated analysis reports.</div>
+                <div class="proj-detail-bullet">Core product principle: minimum data collection for maximum risk control. Every additional field increases abandonment — I pushed back on risk requirements that didn't justify the UX cost.</div>
+                <div class="proj-detail-bullet">Managed external data integrations: credit bureau, national ID verification, third-party credit scoring. Each integration required interface design, encryption spec, and error-state handling.</div>
+                <div class="proj-detail-bullet">Ran multiple rounds of A/B testing pre-launch — comparing automated decisions against expert approvals to validate accuracy before going live. Monitored bad-debt rate post-launch alongside the risk team.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P4: Telco data governance -->
+      <div class="proj-card fade" onclick="this.classList.toggle('open')">
+        <div class="proj-illus">
+          <svg viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:80px">
+            <rect x="4" y="8" width="12" height="9" fill="#1C3A2A" opacity="0.1" rx="0.5"/>
+            <rect x="18" y="12" width="12" height="9" fill="#1C3A2A" opacity="0.1" rx="0.5"/>
+            <rect x="4" y="22" width="12" height="9" fill="#1C3A2A" opacity="0.1" rx="0.5"/>
+            <rect x="18" y="26" width="12" height="9" fill="#1C3A2A" opacity="0.1" rx="0.5"/>
+            <rect x="4" y="36" width="12" height="9" fill="#1C3A2A" opacity="0.1" rx="0.5"/>
+            <rect x="18" y="40" width="12" height="9" fill="#1C3A2A" opacity="0.1" rx="0.5"/>
+            <rect x="4" y="50" width="12" height="9" fill="#1C3A2A" opacity="0.1" rx="0.5"/>
+            <rect x="18" y="54" width="12" height="9" fill="#1C3A2A" opacity="0.1" rx="0.5"/>
+            <rect x="4" y="64" width="12" height="9" fill="#1C3A2A" opacity="0.1" rx="0.5"/>
+            <rect x="18" y="68" width="12" height="9" fill="#1C3A2A" opacity="0.1" rx="0.5"/>
+            <text x="15" y="82" font-family="DM Mono,monospace" font-size="6" fill="#8A8A72" text-anchor="middle">30+ sources</text>
+            <line x1="34" y1="45" x2="72" y2="45" stroke="#1C3A2A" stroke-width="0.8" opacity="0.25" stroke-dasharray="3,2"/>
+            <polygon points="70,41 80,45 70,49" fill="#1C3A2A" opacity="0.2"/>
+            <rect x="82" y="30" width="52" height="28" fill="#1C3A2A" opacity="0.07" rx="1" stroke="#1C3A2A" stroke-width="0.5" stroke-opacity="0.2"/>
+            <text x="108" y="43" font-family="DM Mono,monospace" font-size="7" fill="#1C3A2A" text-anchor="middle" opacity="0.8">unified</text>
+            <text x="108" y="53" font-family="DM Mono,monospace" font-size="7" fill="#1C3A2A" text-anchor="middle" opacity="0.6">warehouse</text>
+            <line x1="134" y1="44" x2="158" y2="20" stroke="#B8860B" stroke-width="0.7" opacity="0.45"/>
+            <line x1="134" y1="45" x2="158" y2="45" stroke="#B8860B" stroke-width="0.7" opacity="0.45"/>
+            <line x1="134" y1="46" x2="158" y2="70" stroke="#B8860B" stroke-width="0.7" opacity="0.45"/>
+            <rect x="158" y="11" width="52" height="16" fill="#B8860B" opacity="0.08" rx="1" stroke="#B8860B" stroke-width="0.4" stroke-opacity="0.3"/>
+            <rect x="158" y="37" width="52" height="16" fill="#B8860B" opacity="0.08" rx="1" stroke="#B8860B" stroke-width="0.4" stroke-opacity="0.3"/>
+            <rect x="158" y="63" width="52" height="16" fill="#B8860B" opacity="0.08" rx="1" stroke="#B8860B" stroke-width="0.4" stroke-opacity="0.3"/>
+            <text x="184" y="22" font-family="DM Mono,monospace" font-size="6" fill="#1C3A2A" text-anchor="middle" opacity="0.6">dashboards</text>
+            <text x="184" y="48" font-family="DM Mono,monospace" font-size="6" fill="#1C3A2A" text-anchor="middle" opacity="0.6">self-serve</text>
+            <text x="184" y="74" font-family="DM Mono,monospace" font-size="6" fill="#1C3A2A" text-anchor="middle" opacity="0.6">auto-reports</text>
+          </svg>
+        </div>
+        <div class="proj-tag-row">
+          <span class="proj-tag green">Telco · BI</span>
+          <span class="proj-tag">BONC · China Unicom</span>
+        </div>
+        <div class="proj-title">Telco data governance & BI</div>
+        <div class="proj-sub">Rebuilt the analytics infrastructure for a provincial telco from the ground up — 30+ source systems, 10M+ subscribers, full data governance, and zero-manual-effort reporting.</div>
+        <div class="proj-nums">
+          <div class="proj-num">30+<span>sources unified</span></div>
+          <div class="proj-num">10M+<span>subscribers</span></div>
+        </div>
+        <div class="proj-detail">
+          <div class="proj-detail-grid">
+            <div class="proj-detail-stat"><div class="proj-detail-val">30+</div><div class="proj-detail-label">Source systems</div></div>
+            <div class="proj-detail-stat"><div class="proj-detail-val">10M+</div><div class="proj-detail-label">Subscribers covered</div></div>
+            <div class="proj-detail-stat"><div class="proj-detail-val">0</div><div class="proj-detail-label">Manual daily reports</div></div>
+          </div>
+          <div class="proj-detail-body">
+            <div>
+              <div class="proj-detail-section-title">The governance foundation</div>
+              <div class="proj-detail-bullets">
+                <div class="proj-detail-bullet">Ran cross-department alignment sessions (marketing, customer service, network ops) to agree on all key metric definitions. One definition for "active user". One for "churn". No more metric disagreements.</div>
+                <div class="proj-detail-bullet">Built automated data quality monitoring across 4 dimensions: completeness (missing fields), accuracy (cross-system consistency), consistency (same data, same answer), and timeliness (update latency). Threshold breaches automatically generate tickets to the responsible data owner.</div>
+                <div class="proj-detail-bullet">Designed data cleaning pipeline: standardised field formats, resolved naming conflicts across systems, mapped 30+ sources into a unified schema.</div>
+              </div>
+            </div>
+            <div>
+              <div class="proj-detail-section-title">The analytics layer</div>
+              <div class="proj-detail-bullets">
+                <div class="proj-detail-bullet">Management dashboards: ARPU trends, churn rate by segment, Net Adds, convergence rate, store rankings — updated daily, no manual assembly.</div>
+                <div class="proj-detail-bullet">Self-serve query tools for analysts — no more waiting days for a data request to be fulfilled by the engineering team.</div>
+                <div class="proj-detail-bullet">Automated scheduled reports delivered to stakeholders on time, every time.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="proj-row-2">
+
+      <!-- P5: Segmentation -->
+      <div class="proj-card fade" onclick="this.classList.toggle('open')">
+        <div class="proj-illus">
+          <svg viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:80px">
+            <ellipse cx="48" cy="28" rx="28" ry="18" fill="none" stroke="#1C3A2A" stroke-width="0.6" stroke-dasharray="3,2" opacity="0.3"/>
+            <circle cx="44" cy="26" r="3.5" fill="#1C3A2A" opacity="0.55"/>
+            <circle cx="54" cy="22" r="2.5" fill="#1C3A2A" opacity="0.35"/>
+            <circle cx="40" cy="34" r="2.5" fill="#1C3A2A" opacity="0.35"/>
+            <circle cx="58" cy="32" r="2" fill="#1C3A2A" opacity="0.25"/>
+            <circle cx="36" cy="24" r="2" fill="#1C3A2A" opacity="0.25"/>
+            <text x="48" y="52" font-family="DM Mono,monospace" font-size="6.5" fill="#1C3A2A" text-anchor="middle" opacity="0.7">high value</text>
+            <ellipse cx="148" cy="58" rx="36" ry="22" fill="none" stroke="#B8860B" stroke-width="0.7" stroke-dasharray="3,2" opacity="0.4"/>
+            <circle cx="144" cy="55" r="4" fill="#B8860B" opacity="0.5"/>
+            <circle cx="156" cy="50" r="3" fill="#B8860B" opacity="0.3"/>
+            <circle cx="138" cy="64" r="3" fill="#B8860B" opacity="0.3"/>
+            <circle cx="160" cy="62" r="2.5" fill="#B8860B" opacity="0.2"/>
+            <circle cx="132" cy="52" r="2" fill="#B8860B" opacity="0.2"/>
+            <circle cx="152" cy="68" r="2" fill="#B8860B" opacity="0.2"/>
+            <text x="148" y="86" font-family="DM Mono,monospace" font-size="6.5" fill="#B8860B" text-anchor="middle" opacity="0.7">churn risk</text>
+            <ellipse cx="90" cy="44" rx="20" ry="14" fill="none" stroke="#1C3A2A" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.2"/>
+            <circle cx="88" cy="42" r="2.5" fill="#1C3A2A" opacity="0.3"/>
+            <circle cx="96" cy="38" r="2" fill="#1C3A2A" opacity="0.2"/>
+            <circle cx="84" cy="50" r="2" fill="#1C3A2A" opacity="0.2"/>
+            <text x="90" y="62" font-family="DM Mono,monospace" font-size="6" fill="#1C3A2A" text-anchor="middle" opacity="0.5">mid tier</text>
+          </svg>
+        </div>
+        <div class="proj-tag-row">
+          <span class="proj-tag green">Telco · Analytics</span>
+          <span class="proj-tag">BONC · Segmentation</span>
+        </div>
+        <div class="proj-title">User segmentation & prediction</div>
+        <div class="proj-sub">Clustering-based segmentation across 4 dimensions, feeding churn prediction, upgrade propensity, and convergence selling models — all translating into targeted campaigns with measurable ARPU impact.</div>
+        <div class="proj-nums">
+          <div class="proj-num">92%<span>annual retention</span></div>
+          <div class="proj-num">+18%<span>avg ARPU</span></div>
+        </div>
+        <div class="proj-detail">
+          <div class="proj-detail-grid">
+            <div class="proj-detail-stat"><div class="proj-detail-val">92%+</div><div class="proj-detail-label">Annual retention</div></div>
+            <div class="proj-detail-stat"><div class="proj-detail-val">+18%</div><div class="proj-detail-label">Avg monthly ARPU</div></div>
+            <div class="proj-detail-stat"><div class="proj-detail-val">5–8</div><div class="proj-detail-label">Actionable segments</div></div>
+          </div>
+          <div class="proj-detail-two-col">
+            <div>
+              <div class="proj-detail-col-title">Segmentation system</div>
+              <div class="proj-detail-bullets">
+                <div class="proj-detail-bullet">RFM value model: ARPU, payment frequency, recency of activity — identifying high-value, mid-tier, and low-value groups.</div>
+                <div class="proj-detail-bullet">Behavioural patterns: data usage intensity, service mix, peak usage times, content preferences.</div>
+                <div class="proj-detail-bullet">Lifecycle stage: new, active, at-risk, dormant (zero usage 30+ days but not yet churned), and churned.</div>
+                <div class="proj-detail-bullet">Preference characteristics: price-sensitive, data-heavy, voice-primary, elderly users, enterprise contacts.</div>
+                <div class="proj-detail-bullet">Deliberately constrained to 5–8 clusters — analytically meaningful but operationally executable. More segments = less execution.</div>
+              </div>
+            </div>
+            <div>
+              <div class="proj-detail-col-title">Predictive models</div>
+              <div class="proj-detail-bullets">
+                <div class="proj-detail-bullet">Churn prediction: spend decline trend + complaint frequency + usage anomalies + detected competitor touchpoints → risk score and intervention timing.</div>
+                <div class="proj-detail-bullet">Upgrade propensity: data cap hit rate + 5G device capability + video subscription status → who is ready for a higher-tier plan.</div>
+                <div class="proj-detail-bullet">Convergence selling: location data + family call graph → mobile-only users with high household broadband potential.</div>
+                <div class="proj-detail-bullet">Campaigns executed across SMS, app push, outbound calls, and co-marketing (e-commerce and bank partners) — channel matched to segment behaviour.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- P6: Used car marketplace -->
+      <div class="proj-card fade" onclick="this.classList.toggle('open')">
+        <div class="proj-illus">
+          <svg viewBox="0 0 360 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:90px">
+            <line x1="24" y1="76" x2="206" y2="76" stroke="#1C3A2A" stroke-width="0.5" opacity="0.25"/>
+            <line x1="24" y1="76" x2="24" y2="12" stroke="#1C3A2A" stroke-width="0.5" opacity="0.25"/>
+            <text x="24" y="82" font-family="DM Mono,monospace" font-size="6.5" fill="#8A8A72" text-anchor="middle">0</text>
+            <text x="206" y="82" font-family="DM Mono,monospace" font-size="6.5" fill="#8A8A72" text-anchor="middle">6 months</text>
+            <text x="14" y="15" font-family="DM Mono,monospace" font-size="6.5" fill="#B8860B" text-anchor="middle">100K</text>
+            <polyline points="24,74 46,72 72,68 98,60 124,48 152,32 178,18 196,12" stroke="#1C3A2A" stroke-width="1.5" fill="none" opacity="0.6"/>
+            <polyline points="24,74 46,72 72,68 98,60 124,48 152,32 178,18 196,12" stroke="#B8860B" stroke-width="0" fill="rgba(184,134,11,0.06)"/>
+            <circle cx="196" cy="12" r="4" fill="#B8860B" opacity="0.8"/>
+            <circle cx="24" cy="74" r="2.5" fill="#1C3A2A" opacity="0.4"/>
+            <line x1="98" y1="60" x2="98" y2="76" stroke="#1C3A2A" stroke-width="0.4" stroke-dasharray="2,2" opacity="0.3"/>
+            <text x="98" y="84" font-family="DM Mono,monospace" font-size="6" fill="#8A8A72" text-anchor="middle">launch</text>
+            <text x="106" y="56" font-family="DM Mono,monospace" font-size="6.5" fill="#B8860B">MVP</text>
+          </svg>
+        </div>
+        <div class="proj-tag-row">
+            <span class="proj-tag green">eCommerce · 0-to-1</span>
+            <span class="proj-tag">UCAR · Marketplace</span>
+            <span class="proj-tag">B2C + C2C</span>
+          </div>
+          <div class="proj-title">Used-car marketplace — concept to 100K listings in 6 months</div>
+          <div class="proj-sub">Built from scratch: user-facing web, PIM, OMS, and CRM. Supported both B2C dealerships and C2C private sellers. The hardest product decision was knowing what not to build in version one.</div>
+          <div class="proj-nums">
+            <div class="proj-num">6mo<span>concept to launch</span></div>
+            <div class="proj-num">100K+<span>peak listings</span></div>
+            <div class="proj-num">70%<span>dealer supply</span></div>
+          </div>
+          <div class="proj-detail">
+            <div class="proj-detail-grid">
+              <div class="proj-detail-stat"><div class="proj-detail-val">6</div><div class="proj-detail-label">Months to launch</div></div>
+              <div class="proj-detail-stat"><div class="proj-detail-val">100K+</div><div class="proj-detail-label">Peak active listings</div></div>
+              <div class="proj-detail-stat"><div class="proj-detail-val">2</div><div class="proj-detail-label">Supply models: B2C + C2C</div></div>
+            </div>
+            <div class="proj-detail-body">
+              <div>
+                <div class="proj-detail-section-title">Strategic context</div>
+                <div class="proj-detail-text">Parent company operated China's largest car rental fleet — generating a steady pipeline of retired vehicles. This became the seed supply. Combined with a fast-growing used-car market, the opportunity was clear. I owned the product side: web experience, PIM for unique per-vehicle listings, OMS for orders, and CRM for dealer relationships.</div>
+              </div>
+              <div>
+                <div class="proj-detail-section-title">MVP decisions under time pressure</div>
+                <div class="proj-detail-bullets">
+                  <div class="proj-detail-bullet">Framework: get the core transaction flow working end-to-end. Everything else is post-launch. No advanced personalisation, no full inspection infrastructure, no complex analytics in v1.</div>
+                  <div class="proj-detail-bullet">Prioritised dealer onboarding first: 70% of supply came from B2C dealers. Without a smooth bulk-listing tool and dealer portal, there was no marketplace. C2C individual sellers came second.</div>
+                  <div class="proj-detail-bullet">Used-car PIM was uniquely complex — every vehicle is a unique SKU with its own condition, mileage, and history. No standard product catalogue to inherit.</div>
+                  <div class="proj-detail-bullet">The hardest trade-off: vehicle verification and inspection infrastructure would build trust but couldn't be delivered in the timeline. Launched with a lighter disclosure model and clear buyer communication, with full inspection infrastructure planned for post-launch.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills" style="padding-top:0">
+  <div class="section-eyebrow">Skills</div>
+  <h2 class="section-h2">What I bring.</h2>
+  <div class="skills-wrap fade">
+    <div>
+      <div class="skill-group-title">Product management</div>
+      <div class="skill-rows">
+        <div class="skill-row"><span class="skill-name">Product strategy & roadmap</span><div class="skill-bar"><div class="skill-bar-fill" style="width:95%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Agile / Squad model</span><div class="skill-bar"><div class="skill-bar-fill" style="width:95%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Stakeholder management</span><div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Cross-functional execution</span><div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Requirements & specs</span><div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Figma / Axure / Miro</span><div class="skill-bar"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+      </div>
+      <div class="skill-group-title" style="margin-top:32px">Analytics & optimisation</div>
+      <div class="skill-rows">
+        <div class="skill-row"><span class="skill-name">Funnel analysis & conversion</span><div class="skill-bar"><div class="skill-bar-fill" style="width:95%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">A/B testing & experimentation</span><div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Attribution modelling</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">User segmentation & clustering</span><div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Churn prediction & retention</span><div class="skill-bar"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Cohort & lifetime value analysis</span><div class="skill-bar"><div class="skill-bar-fill" style="width:84%"></div></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Data & engineering</div>
+      <div class="skill-rows">
+        <div class="skill-row"><span class="skill-name">SQL — advanced</span><div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Python — data analysis</span><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Data pipeline design (ETL)</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Dashboard design & BI</span><div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">SPSS / statistical modelling</span><div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Snowflake / Power BI</span><div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+      </div>
+      <div class="skill-group-title" style="margin-top:32px">Systems built</div>
+      <div class="systems-grid">
+        <div class="system-item">Web / App</div>
+        <div class="system-item">PIM</div>
+        <div class="system-item">OMS</div>
+        <div class="system-item">CRM</div>
+        <div class="system-item">ERP</div>
+        <div class="system-item">Inventory</div>
+        <div class="system-item">Data Products</div>
+        <div class="system-item">Credit Engine</div>
+        <div class="system-item">BI Platform</div>
+        <div class="system-item">Dispatch Engine</div>
+        <div class="system-item">SSO / Identity</div>
+        <div class="system-item">System Integration</div>
+      </div>
+      <div class="skill-group-title" style="margin-top:32px">Tools</div>
+      <div class="skill-tag-list">
+        <span class="skill-tag">GA4</span>
+        <span class="skill-tag">Adobe Analytics</span>
+        <span class="skill-tag">GTM / Tealium</span>
+        <span class="skill-tag">Jira</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Axure</span>
+        <span class="skill-tag">Miro</span>
+        <span class="skill-tag">WordPress</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education" style="padding-top:0">
+  <div class="section-eyebrow">Education & Certifications</div>
+  <h2 class="section-h2">The foundation.</h2>
+  <div class="edu-grid fade">
+    <div>
+      <div class="edu-block">
+        <div class="edu-deg">Master of Information Sciences</div>
+        <div class="edu-school">Massey University · New Zealand</div>
+        <div class="edu-year">Feb 2024 – Jul 2025</div>
+        <div class="edu-items">
+          <div class="edu-item">Data Science — Python, SQL, data wrangling, visualisation</div>
+          <div class="edu-item">Advanced Machine Learning — deep learning algorithms, LLM</div>
+          <div class="edu-item">Big Data — multivariable analysis, statistics, SAS</div>
+          <div class="edu-item">GIS — geographic information systems, QGIS, Postgres</div>
+        </div>
+      </div>
+      <div class="edu-block">
+        <div class="edu-deg">Bachelor of Computer Science</div>
+        <div class="edu-school">Central South University · China · QS #431</div>
+        <div class="edu-year">Sep 2005 – Jul 2009</div>
+        <div class="edu-items">
+          <div class="edu-item">Information Security specialisation</div>
+          <div class="edu-item">C/C++, Java, Software Engineering</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="cert-list">
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">IBM AI Product Manager Specialization</div>
+            <div class="cert-org">IBM · March 2025 · Credential ID: OJ2WFN4HUDNZ</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Advanced Product Manager</div>
+            <div class="cert-org">Colab Cohort NZ · October 2025</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Google Analytics Certification (GA4)</div>
+            <div class="cert-org">Google Skillshop · 2025</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div>
+            <div class="cert-name">Security Operations Center (SOC)</div>
+            <div class="cert-org">CISCO · November 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-eyebrow">Contact</div>
+  <h2 class="contact-title">Let's build something<br><em>that moves the numbers.</em></h2>
+  <p class="contact-sub">Open to product management, digital optimisation, and analytics roles in New Zealand.</p>
+  <div class="contact-btns">
+    <a href="https://www.linkedin.com/in/laurahfc/" target="_blank" class="btn-gold">LinkedIn →</a>
+    <a href="mailto:overlaurasea@gmail.com" class="btn-ghost">Email →</a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-left">Laura Cai · Auckland, New Zealand</span>
+  <span class="footer-right">linkiwise.com</span>
+</footer>
+
+<script>
+const bar=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  bar.style.width=((h.scrollTop/(h.scrollHeight-h.clientHeight))*100)+'%';
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.07});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
